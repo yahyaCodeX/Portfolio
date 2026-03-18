@@ -49,10 +49,14 @@ export default function About() {
         >
           <div className="aspect-square glass rounded-3xl overflow-hidden relative group">
             <img 
-              src="https://images.ctfassets.net/23aumh6u8s0i/4JFn93iA5DZgomgcIPJOPx/700a59ae9668acf22df959dcf45b409a/spring" 
+              src="/profile-photo.jpeg"
               alt="Muhammad Yahya Siddiqui"
-              className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-500"
-              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-top opacity-50 group-hover:opacity-70 transition-opacity duration-500"
+              loading="lazy"
+              onError={(event) => {
+                event.currentTarget.onerror = null;
+                event.currentTarget.src = "/profile-placeholder.svg";
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-transparent to-transparent" />
             
