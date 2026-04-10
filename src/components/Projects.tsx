@@ -38,8 +38,8 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-32 container mx-auto px-6">
-      <div className="flex flex-col items-center mb-20">
+    <section id="projects" className="py-20 sm:py-32 container mx-auto px-4 sm:px-6">
+      <div className="flex flex-col items-center mb-12 sm:mb-20 text-center">
         <motion.span 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -47,10 +47,10 @@ export default function Projects() {
         >
           Portfolio
         </motion.span>
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Featured Projects</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter">Featured Projects</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
         {projects.map((project, index) => (
           <motion.div
             key={index}
@@ -60,8 +60,8 @@ export default function Projects() {
             viewport={{ once: true }}
             className="group relative"
           >
-            <div className="relative overflow-hidden rounded-2xl glass p-6 transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-[0_20px_40px_rgba(16,185,129,0.15)] group-hover:border-emerald-500/30">
-              <div className="relative h-64 overflow-hidden rounded-xl mb-6">
+            <div className="relative overflow-hidden rounded-2xl glass p-4 sm:p-6 transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-[0_20px_40px_rgba(16,185,129,0.15)] group-hover:border-emerald-500/30">
+              <div className="relative h-48 sm:h-64 overflow-hidden rounded-xl mb-4 sm:mb-6">
                 <img 
                   src={project.image} 
                   alt={project.title}
@@ -73,26 +73,26 @@ export default function Projects() {
                     href={project.github} 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-emerald-500 text-bg-dark font-bold rounded-full hover:bg-emerald-400 transition-all transform translate-y-4 group-hover:translate-y-0"
+                    className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-emerald-500 text-bg-dark font-bold rounded-full hover:bg-emerald-400 transition-all transform translate-y-4 group-hover:translate-y-0 text-sm"
                   >
-                    <Github size={18} />
+                    <Github size={16} />
                     View Code
                   </a>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                 {project.tags.map((tag) => (
-                  <span key={tag} className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-mono rounded-full border border-emerald-500/20">
+                  <span key={tag} className="px-2.5 sm:px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[9px] sm:text-[10px] font-mono rounded-full border border-emerald-500/20">
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <h3 className="text-2xl font-bold mb-3 group-hover:text-emerald-400 transition-colors">{project.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">{project.description}</p>
+              <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-3 group-hover:text-emerald-400 transition-colors">{project.title}</h3>
+              <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">{project.description}</p>
               
-              <div className="flex items-center justify-between pt-6 border-t border-white/5">
+              <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-white/5">
                 <a 
                   href={project.github} 
                   className="text-emerald-400 text-xs font-mono flex items-center gap-2 hover:underline"

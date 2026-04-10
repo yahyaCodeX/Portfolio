@@ -42,9 +42,9 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-32 bg-surface/50">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col items-center mb-20 text-center">
+    <section id="skills" className="py-20 sm:py-32 bg-surface/50">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex flex-col items-center mb-12 sm:mb-20 text-center">
           <motion.span 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -52,10 +52,10 @@ export default function Skills() {
           >
             Technical Stack
           </motion.span>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter max-w-2xl">Expertise & Skills</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter max-w-2xl">Expertise & Skills</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {skills.map((skill, index) => (
             <motion.div
               key={index}
@@ -66,12 +66,12 @@ export default function Skills() {
               className="group relative"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-100 transition-opacity blur-2xl -z-10`} />
-              <div className="glass p-8 rounded-2xl h-full transition-all duration-300 group-hover:border-emerald-500/30 group-hover:translate-y-[-4px]">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+              <div className="glass p-6 sm:p-8 rounded-2xl h-full transition-all duration-300 group-hover:border-emerald-500/30 group-hover:translate-y-[-4px]">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
                   {skill.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4">{skill.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{skill.desc}</p>
+                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">{skill.title}</h3>
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">{skill.desc}</p>
               </div>
             </motion.div>
           ))}
