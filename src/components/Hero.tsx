@@ -195,10 +195,10 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.88, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 80 }}
-              className="relative shrink-0 hidden lg:block"
+              className="relative shrink-0"
             >
               {/* Profile card — rounded-square, clean gradient border */}
-              <div className="relative w-[300px] xl:w-[340px]">
+              <div className="relative w-[260px] sm:w-[300px] xl:w-[340px] mx-auto">
 
                 {/* Gradient border wrapper — static, no spin */}
                 <div
