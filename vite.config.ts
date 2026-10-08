@@ -116,28 +116,45 @@ ${knowledge}`;
               { role: 'user', parts: [{ text: question }] },
             ];
 
-            // Call Gemini API
-            const geminiRes = await fetch(
-              `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`,
-              {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  system_instruction: { parts: [{ text: systemInstruction }] },
-                  contents,
-                  generationConfig: {
-                    temperature: 0.4,
-                    maxOutputTokens: 1024,
-                  },
-                }),
-              }
-            );
+            const models = [
+              'gemini-3.5-flash-lite',
+              'gemini-3.1-flash-lite',
+              'gemini-flash-latest',
+              'gemini-3.8-flash'
+            ];
 
-            if (!geminiRes.ok) {
-              const errText = await geminiRes.text();
-              console.error('[portfolio-chat] Gemini API error (Status ' + geminiRes.status + '):', errText);
+            let geminiRes = null;
+            let errText = '';
+
+            for (const model of models) {
+              const res = await fetch(
+                `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+                {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    system_instruction: { parts: [{ text: systemInstruction }] },
+                    contents,
+                    generationConfig: {
+                      temperature: 0.4,
+                      maxOutputTokens: 1024,
+                    },
+                  }),
+                }
+              );
+
+              if (res.ok) {
+                geminiRes = res;
+                break;
+              } else {
+                errText = await res.text();
+                console.error(`[portfolio-chat] Model ${model} failed:`, errText);
+              }
+            }
+
+            if (!geminiRes || !geminiRes.ok) {
               res.writeHead(502, { 'Content-Type': 'application/json' });
-              res.end(JSON.stringify({ error: "Gemini API error: " + errText }));
+              res.end(JSON.stringify({ error: "All fallback models failed. Last error: " + errText }));
               return;
             }
 
