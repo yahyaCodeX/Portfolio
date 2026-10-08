@@ -3,7 +3,7 @@ import { Menu } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 sm:px-12 flex items-center justify-between pointer-events-auto">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 sm:px-12 flex items-center justify-between bg-white/90 backdrop-blur-md border-b border-gray-200/50 shadow-sm transition-all">
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
