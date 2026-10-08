@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/**/*.js": {
+      "includeFiles": "portfolio-knowledge/**"
+    },
+    "api/**/*.ts": {
+      "includeFiles": "portfolio-knowledge/**"
+    }
+  }
+}

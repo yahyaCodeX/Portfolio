@@ -1,16 +1,16 @@
 import { motion, useInView } from "motion/react";
-import { GraduationCap, Code, Briefcase, Calendar, ArrowUpRight } from "lucide-react";
+import { GraduationCap, Code, Briefcase, Calendar } from "lucide-react";
 import { useRef } from "react";
 
 const timeline = [
   {
     year: "2026 – Present",
-    title: "Decentralized Degree Verification System",
+    title: "Decentralized Degree Verification",
     org: "Blockchain Project",
     description: "Built a secure, tamper-proof degree verification system leveraging blockchain technology and smart contracts.",
     icon: <Briefcase size={18} />,
-    color: "#a78bfa",
-    bgGradient: "linear-gradient(135deg, rgba(139,92,246,0.12), rgba(16,185,129,0.04))",
+    color: "#0f172a", // Dark brand color
+    accent: "#A3E635", // Lime green
     type: "Project",
     tags: ["Blockchain", "Solidity", "Web3"],
   },
@@ -20,30 +20,30 @@ const timeline = [
     org: "Backend Project",
     description: "Complete backend solution for managing book issuing, returns, and inventory with optimized database queries.",
     icon: <Code size={18} />,
-    color: "#06b6d4",
-    bgGradient: "linear-gradient(135deg, rgba(6,182,212,0.12), rgba(139,92,246,0.04))",
+    color: "#0f172a",
+    accent: "#A3E635",
     type: "Project",
     tags: ["Java", "MySQL", "JDBC"],
   },
   {
     year: "2025",
-    title: "Fitness Tracker — Microservices",
+    title: "Fitness Tracker (Microservices)",
     org: "Personal Project",
     description: "Designed and built a scalable fitness tracking system using Spring Boot microservices with REST APIs.",
     icon: <Code size={18} />,
-    color: "#22d3ee",
-    bgGradient: "linear-gradient(135deg, rgba(34,211,238,0.12), rgba(16,185,129,0.04))",
+    color: "#0f172a",
+    accent: "#A3E635",
     type: "Project",
     tags: ["Spring Boot", "Microservices", "MySQL"],
   },
   {
     year: "2022 – Present",
-    title: "B.E. Computer Systems Engineering",
-    org: "Mehran University of Engineering & Technology",
-    description: "Specializing in backend development, system architecture, and AI-based automation. Final year student.",
+    title: "B.E. Computer Systems Eng.",
+    org: "Mehran University of Engineering & Tech",
+    description: "Specializing in backend development, system architecture, and AI-based automation.",
     icon: <GraduationCap size={18} />,
-    color: "#10b981",
-    bgGradient: "linear-gradient(135deg, rgba(16,185,129,0.12), rgba(34,211,238,0.04))",
+    color: "#0f172a",
+    accent: "#A3E635",
     type: "Education",
     tags: ["CSE", "MUET", "Final Year"],
   },
@@ -54,127 +54,106 @@ export default function Experience() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" ref={sectionRef} className="py-20 sm:py-32 relative">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex flex-col items-center mb-12 sm:mb-20 text-center">
+    <section id="experience" ref={sectionRef} className="py-24 sm:py-32 relative z-10 bg-[#FAFAF9]">
+      <div className="container mx-auto px-6 sm:px-12">
+        <div className="flex flex-col items-center mb-16 sm:mb-24 text-center">
           <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-gradient font-mono text-xs tracking-widest uppercase mb-3"
+            className="text-sm font-serif italic text-brand-dark/60 mb-2"
           >
-            Journey
+            / Journey & Timeline
           </motion.span>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight">
-            Experience &{" "}
-            <span className="text-gradient-shimmer">Timeline</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-brand-dark">
+            Here's how I evolved
           </h2>
-          <p className="text-gray-500 text-sm mt-3 max-w-md">
-            A chronological view of my projects and academic journey
-          </p>
         </div>
 
-        <div className="max-w-3xl mx-auto relative">
+        <div className="max-w-4xl mx-auto relative">
           {/* Animated vertical line */}
-          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px overflow-hidden">
-            {/* Static dim line */}
-            <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.05)' }} />
+          <div className="absolute left-[38px] sm:left-[42px] top-0 bottom-0 w-[2px] overflow-hidden rounded-full bg-gray-200">
             {/* Animated fill */}
             <motion.div
-              className="absolute top-0 left-0 right-0"
+              className="absolute top-0 left-0 right-0 w-full"
               initial={{ height: "0%" }}
               animate={isInView ? { height: "100%" } : { height: "0%" }}
               transition={{ duration: 2.5, ease: "easeInOut" }}
               style={{
-                background: 'linear-gradient(180deg, rgba(16,185,129,0.8), rgba(34,211,238,0.6), rgba(139,92,246,0.4))',
+                background: 'linear-gradient(180deg, #A3E635, #22c55e)',
               }}
             />
           </div>
 
-          <div className="flex flex-col gap-6 sm:gap-10">
+          <div className="flex flex-col gap-8 sm:gap-12">
             {timeline.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -24 }}
+                initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.12, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="relative pl-16 sm:pl-20 group"
+                transition={{ delay: index * 0.15, duration: 0.6, ease: "easeOut" }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="relative pl-24 sm:pl-32 group"
               >
-                {/* Timeline node */}
-                <motion.div
-                  className="absolute left-3 sm:left-4.5 top-4 w-6 h-6 rounded-full flex items-center justify-center z-10 transition-all duration-300 group-hover:scale-125"
-                  style={{
-                    background: `radial-gradient(circle, ${item.color}50, ${item.color}18)`,
-                    border: `2px solid ${item.color}70`,
-                    boxShadow: `0 0 16px ${item.color}30`,
-                  }}
-                  whileHover={{ boxShadow: `0 0 24px ${item.color}60` }}
-                >
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: item.color }} />
-                </motion.div>
+                {/* Timeline node - Glowing pulsing dot */}
+                <div className="absolute left-[29px] sm:left-[33px] top-6 w-5 h-5 flex items-center justify-center z-10">
+                  <motion.div 
+                    className="absolute w-full h-full rounded-full bg-[#A3E635]/40"
+                    animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.4 }}
+                  />
+                  <div className="w-2.5 h-2.5 rounded-full bg-white border-[2px] border-[#A3E635] shadow-[0_0_10px_rgba(163,230,53,0.5)] z-20 group-hover:scale-150 transition-transform duration-300" />
+                </div>
 
                 {/* Card */}
-                <motion.div
-                  className="gradient-border rounded-2xl p-5 sm:p-6 transition-all duration-300 group-hover:translate-y-[-3px] cursor-default"
-                  style={{ background: item.bgGradient }}
-                  whileHover={{ boxShadow: `0 12px 40px ${item.color}15` }}
+                <div
+                  className="glass-card rounded-[24px] p-6 sm:p-8 transition-all duration-300 group-hover:-translate-y-1 bg-white border border-gray-100 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden"
                 >
+                  {/* Subtle top accent line */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#A3E635] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
                   {/* Header row */}
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-3 flex-1 min-w-0">
-                      <div
-                        className="p-2 rounded-xl shrink-0"
-                        style={{ background: `${item.color}20`, color: item.color }}
-                      >
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                    <div className="flex items-center gap-4 flex-1">
+                      <div className="p-3 rounded-2xl bg-gray-50 border border-gray-100 text-brand-dark group-hover:bg-[#A3E635]/10 group-hover:text-[#65a30d] group-hover:border-[#A3E635]/20 transition-colors shrink-0">
                         {item.icon}
                       </div>
-                      <div className="min-w-0">
-                        <h3 className="text-sm sm:text-base font-bold text-gray-100 group-hover:text-white transition-colors leading-snug">
+                      <div>
+                        <h3 className="text-lg sm:text-xl font-medium text-brand-dark leading-snug">
                           {item.title}
                         </h3>
-                        <p style={{ color: item.color }} className="text-xs font-mono opacity-80 mt-0.5 truncate">
+                        <p className="text-sm font-serif italic text-brand-dark/60 mt-0.5">
                           {item.org}
                         </p>
                       </div>
                     </div>
-                    <div className="flex flex-col items-end gap-2 shrink-0">
-                      {/* Type badge */}
-                      <span
-                        className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full uppercase tracking-wider"
-                        style={{
-                          background: `${item.color}18`,
-                          color: item.color,
-                          border: `1px solid ${item.color}30`,
-                        }}
-                      >
+                    
+                    <div className="flex flex-row sm:flex-col items-center sm:items-end gap-3 sm:gap-2 shrink-0">
+                      <span className="text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase tracking-widest bg-gray-50 text-brand-dark/50 border border-gray-100">
                         {item.type}
                       </span>
-                      <div className="flex items-center gap-1 text-gray-600 text-[10px] font-mono">
-                        <Calendar size={10} />
+                      <div className="flex items-center gap-1.5 text-brand-dark/40 text-xs font-mono ml-auto sm:ml-0">
+                        <Calendar size={12} />
                         <span>{item.year}</span>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-3">{item.description}</p>
+                  <p className="text-brand-dark/70 text-sm leading-relaxed mb-6">
+                    {item.description}
+                  </p>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-2">
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] font-mono px-2 py-0.5 rounded-md"
-                        style={{
-                          background: 'rgba(255,255,255,0.04)',
-                          border: '1px solid rgba(255,255,255,0.08)',
-                          color: '#94a3b8',
-                        }}
+                        className="text-[11px] font-medium px-3 py-1 rounded-lg bg-gray-50 text-brand-dark/60 border border-gray-100 transition-colors group-hover:border-gray-200 group-hover:bg-gray-100/50"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
             ))}
           </div>
